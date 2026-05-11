@@ -1,0 +1,18 @@
+import { STATUS_COLORS } from "../features/constants";
+import type { PlatformActiveStatus } from "../features/types";
+
+type Props = {
+  status: PlatformActiveStatus;
+};
+
+export function StatusBadge({ status }: Props) {
+  const color = STATUS_COLORS[status];
+
+  return (
+    <span
+      className={`rounded-full px-3 py-1 text-xs font-bold ${color}`}
+    >
+      {status}
+    </span>
+  );
+}
