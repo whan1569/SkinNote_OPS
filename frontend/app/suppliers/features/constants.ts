@@ -1,7 +1,4 @@
-import type {
-  SupplierActiveStatus,
-  SupplierStatus,
-} from "./types";
+import type { SupplierActiveStatus, SupplierStatus } from "./types";
 
 export const SUPPLIER_STATUSES: SupplierStatus[] = [
   "전체",
@@ -12,13 +9,6 @@ export const SUPPLIER_STATUSES: SupplierStatus[] = [
 export const SUPPLIER_ACTIVE_STATUSES: SupplierActiveStatus[] = [
   "사용중",
   "비활성",
-];
-
-export const PAYMENT_TERMS = [
-  "월말 30일",
-  "월말 15일",
-  "선금 30%",
-  "선금 50%",
 ];
 
 export const STATUS_COLORS: Record<SupplierActiveStatus, string> = {
