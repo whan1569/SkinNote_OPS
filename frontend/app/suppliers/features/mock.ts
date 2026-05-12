@@ -1,8 +1,5 @@
 import type { Supplier } from "./types";
-import {
-  PAYMENT_TERMS,
-  SUPPLIER_STATUSES,
-} from "./constants";
+import { SUPPLIER_STATUSES } from "./constants";
 
 export const suppliers: Supplier[] = [
   {
@@ -11,7 +8,8 @@ export const suppliers: Supplier[] = [
     managerName: "김민수",
     phone: "010-1234-5678",
     email: "kim@koreacosmetic.kr",
-    paymentTerm: "월말 30일",
+    advancePaymentRate: 0,
+    settlementDay: 30,
     status: "사용중",
     createdAt: "2025-03-15",
   },
@@ -21,7 +19,8 @@ export const suppliers: Supplier[] = [
     managerName: "이서연",
     phone: "010-2345-6789",
     email: "lee@beautytrade.co.kr",
-    paymentTerm: "월말 30일",
+    advancePaymentRate: 0,
+    settlementDay: 30,
     status: "사용중",
     createdAt: "2025-03-18",
   },
@@ -31,7 +30,8 @@ export const suppliers: Supplier[] = [
     managerName: "박지훈",
     phone: "010-3456-7890",
     email: "park@globalcare.co.kr",
-    paymentTerm: "선금 50%",
+    advancePaymentRate: 50,
+    settlementDay: 0,
     status: "사용중",
     createdAt: "2025-03-20",
   },
@@ -41,7 +41,8 @@ export const suppliers: Supplier[] = [
     managerName: "최유진",
     phone: "010-4567-8901",
     email: "choi@seoulbeauty.kr",
-    paymentTerm: "월말 30일",
+    advancePaymentRate: 0,
+    settlementDay: 30,
     status: "사용중",
     createdAt: "2025-03-22",
   },
@@ -51,7 +52,8 @@ export const suppliers: Supplier[] = [
     managerName: "정태민",
     phone: "010-5678-9012",
     email: "jung@cosworld.co.kr",
-    paymentTerm: "선금 30%",
+    advancePaymentRate: 30,
+    settlementDay: 15,
     status: "사용중",
     createdAt: "2025-03-25",
   },
@@ -61,11 +63,11 @@ export const suppliers: Supplier[] = [
     managerName: "오세훈",
     phone: "010-7890-1234",
     email: "oh@kns.co.kr",
-    paymentTerm: "월말 30일",
+    advancePaymentRate: 0,
+    settlementDay: 0,
     status: "비활성",
     createdAt: "2024-12-10",
   },
 ];
 
 export const supplierStatuses = SUPPLIER_STATUSES;
-export const paymentTerms = PAYMENT_TERMS;
