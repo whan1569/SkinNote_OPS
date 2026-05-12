@@ -1,4 +1,6 @@
+import type { ReactNode } from "react";
 import { X } from "lucide-react";
+
 import { SUPPLIER_ACTIVE_STATUSES } from "../features/constants";
 import type { Supplier, SupplierDrawerMode } from "../features/types";
 
@@ -13,9 +15,9 @@ export function SupplierDrawer({ open, mode, supplier, onClose }: Props) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-slate-900/30">
+    <div className="fixed inset-0 z-50 flex justify-end bg-black/30">
       <div className="h-full w-[520px] overflow-y-auto bg-white shadow-xl">
-        <div className="sticky top-0 flex items-center justify-between border-b border-slate-100 bg-white p-5">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-100 bg-white p-5">
           <div>
             <h3 className="text-lg font-extrabold text-slate-900">
               공급처 등록/수정
@@ -33,38 +35,40 @@ export function SupplierDrawer({ open, mode, supplier, onClose }: Props) {
           </button>
         </div>
 
-        <div className="space-y-8 p-5">
+        <div className="space-y-6 p-5">
           <section>
             <h4 className="mb-4 text-sm font-extrabold text-slate-900">
               기본 정보
             </h4>
 
             <div className="space-y-4">
+              <Field label="회사 코드" required>
+                <input
+                  defaultValue={supplier?.companyCode ?? ""}
+                  placeholder="예: SUP-001"
+                  className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
+                />
+              </Field>
+
               <Field label="공급처명" required>
-                <div className="relative">
-                  <input
-                    defaultValue={supplier?.supplierName ?? ""}
-                    maxLength={100}
-                    placeholder="공급처명 입력"
-                    className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
-                  />
-                  <span className="absolute bottom-2 right-3 text-xs text-slate-400">
-                    {supplier?.supplierName.length ?? 0}/100
-                  </span>
+                <input
+                  defaultValue={supplier?.supplierName ?? ""}
+                  placeholder="공급처명을 입력하세요"
+                  className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
+                />
+                <div className="mt-1 text-right text-xs text-slate-400">
+                  {supplier?.supplierName.length ?? 0}/100
                 </div>
               </Field>
 
               <Field label="담당자명" required>
-                <div className="relative">
-                  <input
-                    defaultValue={supplier?.managerName ?? ""}
-                    maxLength={50}
-                    placeholder="담당자명 입력"
-                    className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
-                  />
-                  <span className="absolute bottom-2 right-3 text-xs text-slate-400">
-                    {supplier?.managerName.length ?? 0}/50
-                  </span>
+                <input
+                  defaultValue={supplier?.managerName ?? ""}
+                  placeholder="담당자명을 입력하세요"
+                  className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
+                />
+                <div className="mt-1 text-right text-xs text-slate-400">
+                  {supplier?.managerName.length ?? 0}/50
                 </div>
               </Field>
 
@@ -76,7 +80,7 @@ export function SupplierDrawer({ open, mode, supplier, onClose }: Props) {
                 />
               </Field>
 
-              <Field label="이메일" required>
+              <Field label="이메일">
                 <input
                   defaultValue={supplier?.email ?? ""}
                   placeholder="email@example.com"
@@ -92,18 +96,16 @@ export function SupplierDrawer({ open, mode, supplier, onClose }: Props) {
             </h4>
 
             <div className="space-y-4">
-              <Field label="선금 비중" required>
+              <Field label="선금 비중">
                 <div className="relative">
                   <input
                     type="number"
+                    defaultValue={supplier?.advancePaymentRate ?? 0}
                     min={0}
                     max={100}
-                    step={0.1}
-                    defaultValue={supplier?.advancePaymentRate ?? 0}
-                    placeholder="선금 비중 입력"
-                    className="w-full rounded-lg border border-slate-200 px-3 py-2 pr-10 text-sm outline-none"
+                    className="w-full rounded-lg border border-slate-200 px-3 py-2 pr-8 text-sm outline-none"
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-400">
+                  <span className="absolute right-3 top-2 text-sm text-slate-400">
                     %
                   </span>
                 </div>
@@ -112,13 +114,12 @@ export function SupplierDrawer({ open, mode, supplier, onClose }: Props) {
                 </p>
               </Field>
 
-              <Field label="정산일" required>
+              <Field label="정산일">
                 <input
                   type="number"
+                  defaultValue={supplier?.settlementDay ?? 30}
                   min={0}
                   max={31}
-                  defaultValue={supplier?.settlementDay ?? 0}
-                  placeholder="0 입력 시 유동"
                   className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
                 />
                 <p className="mt-1 text-xs text-slate-400">
@@ -139,12 +140,11 @@ export function SupplierDrawer({ open, mode, supplier, onClose }: Props) {
                 </select>
               </Field>
 
-              <Field label="메모">
+              <Field label="비고">
                 <div className="relative">
                   <textarea
                     rows={5}
-                    maxLength={300}
-                    placeholder="메모 입력"
+                    placeholder="비고를 입력하세요"
                     className="w-full resize-none rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
                   />
                   <span className="absolute bottom-3 right-3 text-xs text-slate-400">
@@ -186,7 +186,7 @@ function Field({
 }: {
   label: string;
   required?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <div>
