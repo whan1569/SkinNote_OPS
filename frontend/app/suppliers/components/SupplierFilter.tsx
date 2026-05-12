@@ -10,11 +10,7 @@ type Props = {
   onReset: () => void;
 };
 
-export function SupplierFilter({
-  filter,
-  onChange,
-  onReset,
-}: Props) {
+export function SupplierFilter({ filter, onChange, onReset }: Props) {
   const updateFilter = <K extends keyof SupplierFilterType>(
     key: K,
     value: SupplierFilterType[K],
@@ -26,10 +22,24 @@ export function SupplierFilter({
   };
 
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-      <div className="grid grid-cols-4 gap-4">
+    <section className="mb-5 rounded-2xl border border-slate-200 bg-white p-5">
+      <div className="grid grid-cols-5 gap-4">
         <div>
-          <label className="mb-2 block text-xs font-bold text-slate-500">
+          <label className="mb-2 block text-xs font-extrabold text-slate-700">
+            회사 코드
+          </label>
+          <input
+            value={filter.companyCode}
+            onChange={(event) =>
+              updateFilter("companyCode", event.target.value)
+            }
+            placeholder="회사 코드 입력"
+            className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
+          />
+        </div>
+
+        <div>
+          <label className="mb-2 block text-xs font-extrabold text-slate-700">
             공급처명
           </label>
           <input
@@ -43,7 +53,7 @@ export function SupplierFilter({
         </div>
 
         <div>
-          <label className="mb-2 block text-xs font-bold text-slate-500">
+          <label className="mb-2 block text-xs font-extrabold text-slate-700">
             담당자명
           </label>
           <input
@@ -57,21 +67,19 @@ export function SupplierFilter({
         </div>
 
         <div>
-          <label className="mb-2 block text-xs font-bold text-slate-500">
+          <label className="mb-2 block text-xs font-extrabold text-slate-700">
             연락처
           </label>
           <input
             value={filter.phone}
-            onChange={(event) =>
-              updateFilter("phone", event.target.value)
-            }
+            onChange={(event) => updateFilter("phone", event.target.value)}
             placeholder="연락처 입력"
             className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-xs font-bold text-slate-500">
+          <label className="mb-2 block text-xs font-extrabold text-slate-700">
             상태
           </label>
           <select
@@ -90,10 +98,10 @@ export function SupplierFilter({
         </div>
       </div>
 
-      <div className="mt-4 flex justify-end gap-2">
+      <div className="mt-4 flex justify-end">
         <button
           onClick={onReset}
-          className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700"
+          className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-bold text-slate-700"
         >
           초기화
         </button>
