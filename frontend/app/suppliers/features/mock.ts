@@ -4,6 +4,7 @@ import { SUPPLIER_STATUSES } from "./constants";
 export const suppliers: Supplier[] = [
   {
     id: 1,
+    companyCode: "SUP-001",
     supplierName: "한국코스메틱",
     managerName: "김민수",
     phone: "010-1234-5678",
@@ -15,6 +16,7 @@ export const suppliers: Supplier[] = [
   },
   {
     id: 2,
+    companyCode: "SUP-002",
     supplierName: "뷰티무역",
     managerName: "이서연",
     phone: "010-2345-6789",
@@ -26,6 +28,7 @@ export const suppliers: Supplier[] = [
   },
   {
     id: 3,
+    companyCode: "SUP-003",
     supplierName: "글로벌케어",
     managerName: "박지훈",
     phone: "010-3456-7890",
@@ -37,6 +40,7 @@ export const suppliers: Supplier[] = [
   },
   {
     id: 4,
+    companyCode: "SUP-004",
     supplierName: "서울뷰티",
     managerName: "최유진",
     phone: "010-4567-8901",
@@ -48,6 +52,7 @@ export const suppliers: Supplier[] = [
   },
   {
     id: 5,
+    companyCode: "SUP-005",
     supplierName: "코스월드",
     managerName: "정태민",
     phone: "010-5678-9012",
@@ -59,6 +64,7 @@ export const suppliers: Supplier[] = [
   },
   {
     id: 6,
+    companyCode: "SUP-006",
     supplierName: "케이엔에스",
     managerName: "오세훈",
     phone: "010-7890-1234",
