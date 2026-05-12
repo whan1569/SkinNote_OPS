@@ -7,7 +7,6 @@ import {
 
 export const platformPrices: PlatformPrice[] = [
   {
-    id: 1,
     productName: "선별락 앰플 100ml",
     sku: "COS-CT-100",
     platform: "네이버 스마트스토어",
@@ -21,7 +20,6 @@ export const platformPrices: PlatformPrice[] = [
     updatedAt: "2025-05-23 14:30",
   },
   {
-    id: 2,
     productName: "선별락 앰플 100ml",
     sku: "COS-CT-100",
     platform: "쿠팡",
@@ -35,7 +33,6 @@ export const platformPrices: PlatformPrice[] = [
     updatedAt: "2025-05-23 14:25",
   },
   {
-    id: 3,
     productName: "나이아신아마이드 토너 200ml",
     sku: "COS-NI-200",
     platform: "지마켓",
@@ -49,7 +46,6 @@ export const platformPrices: PlatformPrice[] = [
     updatedAt: "2025-05-22 09:10",
   },
   {
-    id: 4,
     productName: "나이아신아마이드 토너 200ml",
     sku: "COS-NI-200",
     platform: "옥션",
@@ -63,7 +59,6 @@ export const platformPrices: PlatformPrice[] = [
     updatedAt: "2025-05-20 11:05",
   },
   {
-    id: 5,
     productName: "히알루론산 크림 100ml",
     sku: "COS-HA-100",
     platform: "11번가",
@@ -77,7 +72,6 @@ export const platformPrices: PlatformPrice[] = [
     updatedAt: "2025-05-19 16:40",
   },
   {
-    id: 6,
     productName: "비타민C 세럼 30ml",
     sku: "COS-VC-030",
     platform: "티몬",
@@ -91,7 +85,6 @@ export const platformPrices: PlatformPrice[] = [
     updatedAt: "2025-05-23 10:15",
   },
   {
-    id: 7,
     productName: "콜라겐 폼 150ml",
     sku: "COS-CF-150",
     platform: "위메프",
@@ -105,7 +98,6 @@ export const platformPrices: PlatformPrice[] = [
     updatedAt: "2025-05-18 13:22",
   },
   {
-    id: 8,
     productName: "선크림 SPF50+ 50ml",
     sku: "COS-SC-050",
     platform: "카카오톡 스토어",
@@ -119,7 +111,6 @@ export const platformPrices: PlatformPrice[] = [
     updatedAt: "2025-05-22 08:55",
   },
   {
-    id: 9,
     productName: "수딩 젤 300ml",
     sku: "COS-SG-300",
     platform: "네이버 쇼핑",
@@ -133,7 +124,6 @@ export const platformPrices: PlatformPrice[] = [
     updatedAt: "2025-05-21 17:40",
   },
   {
-    id: 10,
     productName: "마스크팩 10매",
     sku: "COS-MP-010",
     platform: "오늘의집",

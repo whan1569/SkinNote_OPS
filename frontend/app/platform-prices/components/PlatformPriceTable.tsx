@@ -16,10 +16,6 @@ export function PlatformPriceTable({ items, onEdit }: Props) {
       <table className="w-full border-collapse text-sm">
         <thead className="bg-slate-50 text-xs font-bold text-slate-500">
           <tr>
-            <th className="w-12 px-5 py-4 text-left">
-              <input type="checkbox" />
-            </th>
-            <th className="px-5 py-4 text-left">No.</th>
             <th className="px-5 py-4 text-left">상품명 / SKU</th>
             <th className="px-5 py-4 text-left">플랫폼</th>
             <th className="px-5 py-4 text-right">판매가</th>
@@ -32,16 +28,8 @@ export function PlatformPriceTable({ items, onEdit }: Props) {
         </thead>
 
         <tbody className="divide-y divide-slate-100">
-          {items.map((item, index) => (
+          {items.map((item) => (
             <tr key={item.id} className="hover:bg-slate-50">
-              <td className="px-5 py-4">
-                <input type="checkbox" />
-              </td>
-
-              <td className="px-5 py-4 text-slate-500">
-                {index + 1}
-              </td>
-
               <td className="px-5 py-4">
                 <div className="font-bold text-slate-900">
                   {item.productName}
@@ -70,6 +58,7 @@ export function PlatformPriceTable({ items, onEdit }: Props) {
                     <div className="font-bold text-blue-600">
                       {item.discountedPrice.toLocaleString()}원
                     </div>
+
                     {item.discountRate && (
                       <div className="mt-1 text-xs font-bold text-red-500">
                         {item.discountRate}% 할인

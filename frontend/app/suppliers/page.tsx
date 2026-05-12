@@ -14,6 +14,7 @@ import type {
 } from "./features/types";
 
 const initialFilter: SupplierFilterType = {
+  companyCode: "",
   supplierName: "",
   managerName: "",
   phone: "",
@@ -21,13 +22,12 @@ const initialFilter: SupplierFilterType = {
 };
 
 export default function SuppliersPage() {
-  const [filter, setFilter] =
-    useState<SupplierFilterType>(initialFilter);
+  const [filter, setFilter] = useState<SupplierFilterType>(initialFilter);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [drawerMode, setDrawerMode] =
-    useState<SupplierDrawerMode>("create");
-  const [selectedSupplier, setSelectedSupplier] =
-    useState<Supplier | null>(null);
+  const [drawerMode, setDrawerMode] = useState<SupplierDrawerMode>("create");
+  const [selectedSupplier, setSelectedSupplier] = useState<Supplier | null>(
+    null,
+  );
 
   const filteredSuppliers = useMemo(() => {
     return getSuppliers(filter);
@@ -51,8 +51,8 @@ export default function SuppliersPage() {
 
   return (
     <>
-      <div className="space-y-6">
-        <div className="flex items-start justify-between">
+      <main className="p-6">
+        <div className="mb-6 flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-extrabold text-slate-900">
               공급처 목록
@@ -62,22 +62,22 @@ export default function SuppliersPage() {
             </p>
           </div>
 
-          <div className="flex gap-3">
-            <button className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm">
+          <div className="flex gap-2">
+            <button className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-bold text-slate-700">
               <Download size={16} />
               엑셀 다운로드
             </button>
 
-            <button className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm">
+            <button className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-bold text-slate-700">
               <Filter size={16} />
               필터
             </button>
 
             <button
               onClick={openCreateDrawer}
-              className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-bold text-white shadow-sm"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-bold text-white"
             >
-              <Plus size={18} />
+              <Plus size={16} />
               공급처 등록
             </button>
           </div>
@@ -89,11 +89,8 @@ export default function SuppliersPage() {
           onReset={() => setFilter(initialFilter)}
         />
 
-        <SupplierTable
-          suppliers={filteredSuppliers}
-          onEdit={openEditDrawer}
-        />
-      </div>
+        <SupplierTable suppliers={filteredSuppliers} onEdit={openEditDrawer} />
+      </main>
 
       <SupplierDrawer
         open={drawerOpen}
