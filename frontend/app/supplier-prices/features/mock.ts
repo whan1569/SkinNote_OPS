@@ -1,8 +1,5 @@
 import type { SupplierPrice } from "./types";
-import {
-  SUPPLIER_OPTIONS,
-  SUPPLIER_PRICE_STATUSES,
-} from "./constants";
+import { SUPPLIER_OPTIONS } from "./constants";
 
 export const supplierPrices: SupplierPrice[] = [
   {
@@ -12,10 +9,6 @@ export const supplierPrices: SupplierPrice[] = [
     supplierName: "한국코스메틱",
     supplyPrice: 9800,
     moq: 100,
-    leadTime: "7일",
-    startDate: "2025-05-01",
-    endDate: null,
-    status: "사용중",
     updatedAt: "2025-05-23 14:30",
   },
   {
@@ -25,10 +18,6 @@ export const supplierPrices: SupplierPrice[] = [
     supplierName: "뷰티무역",
     supplyPrice: 7200,
     moq: 200,
-    leadTime: "10일",
-    startDate: "2025-05-03",
-    endDate: null,
-    status: "사용중",
     updatedAt: "2025-05-22 09:10",
   },
   {
@@ -38,10 +27,6 @@ export const supplierPrices: SupplierPrice[] = [
     supplierName: "글로벌케어",
     supplyPrice: 11200,
     moq: 150,
-    leadTime: "14일",
-    startDate: "2025-04-15",
-    endDate: null,
-    status: "사용중",
     updatedAt: "2025-05-19 16:40",
   },
   {
@@ -51,10 +36,6 @@ export const supplierPrices: SupplierPrice[] = [
     supplierName: "서울뷰티",
     supplyPrice: 8400,
     moq: 120,
-    leadTime: "7일",
-    startDate: "2025-04-20",
-    endDate: null,
-    status: "사용중",
     updatedAt: "2025-05-23 10:15",
   },
   {
@@ -64,10 +45,6 @@ export const supplierPrices: SupplierPrice[] = [
     supplierName: "코스월드",
     supplyPrice: 5900,
     moq: 300,
-    leadTime: "5일",
-    startDate: "2025-03-01",
-    endDate: "2025-05-10",
-    status: "종료",
     updatedAt: "2025-05-10 13:22",
   },
   {
@@ -77,13 +54,8 @@ export const supplierPrices: SupplierPrice[] = [
     supplierName: "케이엔에스",
     supplyPrice: 9100,
     moq: 100,
-    leadTime: "10일",
-    startDate: "2025-05-05",
-    endDate: null,
-    status: "사용중",
     updatedAt: "2025-05-22 08:55",
   },
 ];
 
 export const supplierOptions = SUPPLIER_OPTIONS;
-export const supplierPriceStatuses = SUPPLIER_PRICE_STATUSES;
