@@ -3,7 +3,6 @@ import {
   INTEGRATION_TYPES,
   PLATFORM_STATUSES,
   PLATFORM_TYPES,
-  SETTLEMENT_CYCLES,
 } from "./constants";
 
 export const platforms: Platform[] = [
@@ -15,7 +14,7 @@ export const platforms: Platform[] = [
     integrationType: "API",
     managerName: "김민수",
     managerPhone: "010-1234-5678",
-    settlementCycle: "월말 정산",
+    settlementDate: "2025-05-31",
     commissionRate: 3.74,
     status: "사용중",
     createdAt: "2025-03-15",
@@ -29,7 +28,7 @@ export const platforms: Platform[] = [
     integrationType: "API",
     managerName: "이서연",
     managerPhone: "010-2345-6789",
-    settlementCycle: "주간 정산",
+    settlementDate: "2025-05-29",
     commissionRate: 10.8,
     status: "사용중",
     createdAt: "2025-03-18",
@@ -43,7 +42,7 @@ export const platforms: Platform[] = [
     integrationType: "CSV",
     managerName: "박지훈",
     managerPhone: "010-3456-7890",
-    settlementCycle: "월말 정산",
+    settlementDate: "2025-05-31",
     commissionRate: 12.0,
     status: "사용중",
     createdAt: "2025-03-20",
@@ -57,7 +56,7 @@ export const platforms: Platform[] = [
     integrationType: "CSV",
     managerName: "최유진",
     managerPhone: "010-4567-8901",
-    settlementCycle: "월말 정산",
+    settlementDate: "2025-05-31",
     commissionRate: 12.0,
     status: "사용중",
     createdAt: "2025-03-22",
@@ -71,7 +70,7 @@ export const platforms: Platform[] = [
     integrationType: "API",
     managerName: "정태민",
     managerPhone: "010-5678-9012",
-    settlementCycle: "월말 정산",
+    settlementDate: "2025-05-31",
     commissionRate: 13.0,
     status: "사용중",
     createdAt: "2025-03-25",
@@ -85,7 +84,7 @@ export const platforms: Platform[] = [
     integrationType: "API",
     managerName: "오세훈",
     managerPhone: "010-7890-1234",
-    settlementCycle: "익월 말 정산",
+    settlementDate: "2025-06-30",
     commissionRate: 0,
     status: "사용중",
     createdAt: "2025-04-01",
@@ -99,7 +98,7 @@ export const platforms: Platform[] = [
     integrationType: "수동",
     managerName: "한지민",
     managerPhone: "010-8901-2345",
-    settlementCycle: "월말 정산",
+    settlementDate: "2025-05-31",
     commissionRate: 0,
     status: "비활성",
     createdAt: "2025-04-05",
@@ -110,4 +109,3 @@ export const platforms: Platform[] = [
 export const platformStatuses = PLATFORM_STATUSES;
 export const platformTypes = PLATFORM_TYPES;
 export const integrationTypes = INTEGRATION_TYPES;
-export const settlementCycles = SETTLEMENT_CYCLES;
