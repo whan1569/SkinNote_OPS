@@ -4,6 +4,9 @@ import type { SupplierFilter } from "./types";
 export const getSuppliers = (filter: SupplierFilter) => {
   return suppliers.filter((supplier) => {
     return (
+      supplier.companyCode
+        .toLowerCase()
+        .includes(filter.companyCode.toLowerCase()) &&
       supplier.supplierName
         .toLowerCase()
         .includes(filter.supplierName.toLowerCase()) &&
