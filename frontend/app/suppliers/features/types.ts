@@ -4,16 +4,19 @@ export type SupplierActiveStatus = Exclude<SupplierStatus, "전체">;
 
 export type Supplier = {
   id: number;
+  companyCode: string;
   supplierName: string;
   managerName: string;
   phone: string;
   email: string;
-  paymentTerm: string;
+  advancePaymentRate: number;
+  settlementDay: number;
   status: SupplierActiveStatus;
   createdAt: string;
 };
 
 export type SupplierFilter = {
+  companyCode: string;
   supplierName: string;
   managerName: string;
   phone: string;
