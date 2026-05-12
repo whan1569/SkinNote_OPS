@@ -23,7 +23,7 @@ export default function Sidebar() {
         </div>
 
         <nav className="flex-1 space-y-6 overflow-y-auto pr-1">
-          {menuGroups.map((group) => (
+          {menuGroups.map((group, groupIndex) => (
             <div key={group.title}>
               <p className="mb-2 px-2 text-xs font-semibold text-blue-300">
                 {group.title}
@@ -32,10 +32,6 @@ export default function Sidebar() {
               <div className="space-y-1">
                 {group.items.map((item) => {
                   const Icon = item.icon;
-
-                  // 핵심 수정:
-                  // startsWith를 쓰면 /inventory-transactions가 /inventory에도 걸림.
-                  // 그래서 정확히 같은 경로일 때만 active 처리.
                   const active = pathname === item.href;
 
                   return (
@@ -56,7 +52,9 @@ export default function Sidebar() {
                 })}
               </div>
 
-              <div className="mt-5 border-b border-white/10" />
+              {groupIndex !== menuGroups.length - 1 && (
+                <div className="mt-5 border-b border-white/10" />
+              )}
             </div>
           ))}
         </nav>
