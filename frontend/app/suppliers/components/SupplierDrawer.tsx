@@ -1,13 +1,6 @@
 import { X } from "lucide-react";
-
-import {
-  PAYMENT_TERMS,
-  SUPPLIER_ACTIVE_STATUSES,
-} from "../features/constants";
-import type {
-  Supplier,
-  SupplierDrawerMode,
-} from "../features/types";
+import { SUPPLIER_ACTIVE_STATUSES } from "../features/constants";
+import type { Supplier, SupplierDrawerMode } from "../features/types";
 
 type Props = {
   open: boolean;
@@ -16,137 +9,151 @@ type Props = {
   onClose: () => void;
 };
 
-export function SupplierDrawer({
-  open,
-  mode,
-  supplier,
-  onClose,
-}: Props) {
+export function SupplierDrawer({ open, mode, supplier, onClose }: Props) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-black/30">
+    <div className="fixed inset-0 z-50 flex justify-end bg-slate-900/30">
       <div className="h-full w-[520px] overflow-y-auto bg-white shadow-xl">
-        <div className="p-6">
-          <div className="flex items-start justify-between">
-            <div>
-              <h3 className="text-lg font-extrabold text-slate-900">
-                공급처 등록/수정
-              </h3>
-              <p className="mt-1 text-xs text-slate-400">
-                공급처 정보를 입력하고 저장하세요.
-              </p>
-            </div>
-
-            <button
-              onClick={onClose}
-              className="text-slate-400 hover:text-slate-700"
-            >
-              <X size={20} />
-            </button>
+        <div className="sticky top-0 flex items-center justify-between border-b border-slate-100 bg-white p-5">
+          <div>
+            <h3 className="text-lg font-extrabold text-slate-900">
+              공급처 등록/수정
+            </h3>
+            <p className="mt-1 text-sm text-slate-500">
+              공급처 정보를 입력하고 저장하세요.
+            </p>
           </div>
 
-          <div className="mt-6 border-b border-slate-200">
-            <div className="flex gap-8">
-              <button className="border-b-2 border-blue-600 pb-3 text-sm font-bold text-blue-600">
-                기본 정보
-              </button>
-              <button className="pb-3 text-sm font-bold text-slate-500">
-                상세 정보
-              </button>
-            </div>
-          </div>
+          <button
+            onClick={onClose}
+            className="rounded-lg p-2 text-slate-400 hover:bg-slate-100"
+          >
+            <X size={20} />
+          </button>
+        </div>
 
-          <div className="mt-5 space-y-5">
-            <Field label="공급처명" required>
-              <div className="relative">
-                <input
-                  defaultValue={supplier?.supplierName ?? ""}
-                  maxLength={100}
-                  className="w-full rounded-md border border-slate-200 px-3 py-2 pr-14 text-sm outline-none"
-                />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
-                  {(supplier?.supplierName.length ?? 0)}/100
-                </span>
-              </div>
-            </Field>
+        <div className="space-y-8 p-5">
+          <section>
+            <h4 className="mb-4 text-sm font-extrabold text-slate-900">
+              기본 정보
+            </h4>
 
-            <Field label="담당자명" required>
-              <div className="relative">
-                <input
-                  defaultValue={supplier?.managerName ?? ""}
-                  maxLength={50}
-                  className="w-full rounded-md border border-slate-200 px-3 py-2 pr-14 text-sm outline-none"
-                />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
-                  {(supplier?.managerName.length ?? 0)}/50
-                </span>
-              </div>
-            </Field>
+            <div className="space-y-4">
+              <Field label="공급처명" required>
+                <div className="relative">
+                  <input
+                    defaultValue={supplier?.supplierName ?? ""}
+                    maxLength={100}
+                    placeholder="공급처명 입력"
+                    className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
+                  />
+                  <span className="absolute bottom-2 right-3 text-xs text-slate-400">
+                    {supplier?.supplierName.length ?? 0}/100
+                  </span>
+                </div>
+              </Field>
 
-            <div className="grid grid-cols-2 gap-4">
+              <Field label="담당자명" required>
+                <div className="relative">
+                  <input
+                    defaultValue={supplier?.managerName ?? ""}
+                    maxLength={50}
+                    placeholder="담당자명 입력"
+                    className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
+                  />
+                  <span className="absolute bottom-2 right-3 text-xs text-slate-400">
+                    {supplier?.managerName.length ?? 0}/50
+                  </span>
+                </div>
+              </Field>
+
               <Field label="연락처" required>
                 <input
                   defaultValue={supplier?.phone ?? ""}
-                  className="w-full rounded-md border border-slate-200 px-3 py-2 text-sm outline-none"
+                  placeholder="010-0000-0000"
+                  className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
                 />
               </Field>
 
-              <Field label="이메일">
+              <Field label="이메일" required>
                 <input
                   defaultValue={supplier?.email ?? ""}
-                  className="w-full rounded-md border border-slate-200 px-3 py-2 text-sm outline-none"
+                  placeholder="email@example.com"
+                  className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
                 />
               </Field>
             </div>
+          </section>
 
-            <Field label="결제 조건" required>
-              <select
-                defaultValue={supplier?.paymentTerm ?? PAYMENT_TERMS[0]}
-                className="w-[220px] rounded-md border border-slate-200 px-3 py-2 text-sm outline-none"
-              >
-                {PAYMENT_TERMS.map((term) => (
-                  <option key={term} value={term}>
-                    {term}
-                  </option>
-                ))}
-              </select>
-            </Field>
+          <section>
+            <h4 className="mb-4 text-sm font-extrabold text-slate-900">
+              상세 정보
+            </h4>
 
-            <Field label="거래 상태" required>
-              <div className="flex gap-8">
-                {SUPPLIER_ACTIVE_STATUSES.map((status) => (
-                  <label
-                    key={status}
-                    className="flex items-center gap-2 text-sm font-bold text-slate-700"
-                  >
-                    <input
-                      type="radio"
-                      name="status"
-                      defaultChecked={
-                        (supplier?.status ?? "사용중") === status
-                      }
-                      className="h-4 w-4"
-                    />
-                    {status}
-                  </label>
-                ))}
-              </div>
-            </Field>
+            <div className="space-y-4">
+              <Field label="선금 비중" required>
+                <div className="relative">
+                  <input
+                    type="number"
+                    min={0}
+                    max={100}
+                    step={0.1}
+                    defaultValue={supplier?.advancePaymentRate ?? 0}
+                    placeholder="선금 비중 입력"
+                    className="w-full rounded-lg border border-slate-200 px-3 py-2 pr-10 text-sm outline-none"
+                  />
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-400">
+                    %
+                  </span>
+                </div>
+                <p className="mt-1 text-xs text-slate-400">
+                  0~100 사이 숫자를 입력하세요.
+                </p>
+              </Field>
 
-            <Field label="메모">
-              <div className="relative">
-                <textarea
-                  maxLength={300}
-                  placeholder="메모를 입력하세요 (선택)"
-                  className="h-28 w-full resize-none rounded-md border border-slate-200 px-3 py-2 text-sm outline-none"
+              <Field label="정산일" required>
+                <input
+                  type="number"
+                  min={0}
+                  max={31}
+                  defaultValue={supplier?.settlementDay ?? 0}
+                  placeholder="0 입력 시 유동"
+                  className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
                 />
-                <span className="absolute bottom-3 right-3 text-xs text-slate-400">
-                  0/300
-                </span>
-              </div>
-            </Field>
-          </div>
+                <p className="mt-1 text-xs text-slate-400">
+                  0 입력 시 유동 정산일로 처리됩니다.
+                </p>
+              </Field>
+
+              <Field label="상태" required>
+                <select
+                  defaultValue={supplier?.status ?? "사용중"}
+                  className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
+                >
+                  {SUPPLIER_ACTIVE_STATUSES.map((status) => (
+                    <option key={status} value={status}>
+                      {status}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+
+              <Field label="메모">
+                <div className="relative">
+                  <textarea
+                    rows={5}
+                    maxLength={300}
+                    placeholder="메모 입력"
+                    className="w-full resize-none rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none"
+                  />
+                  <span className="absolute bottom-3 right-3 text-xs text-slate-400">
+                    0/300
+                  </span>
+                </div>
+              </Field>
+            </div>
+          </section>
         </div>
 
         <div className="sticky bottom-0 flex justify-end gap-3 border-t border-slate-100 bg-white p-5">
