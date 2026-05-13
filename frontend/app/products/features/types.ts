@@ -19,6 +19,7 @@ export type Product = {
   productName: string;
   sku: string;
   category: ProductActiveCategory;
+  brandName: string;
   createdAt: string;
 };
 
