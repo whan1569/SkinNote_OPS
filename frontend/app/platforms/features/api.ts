@@ -1,31 +1,35 @@
-import { platforms } from "./mock";
-import type { PlatformFilter } from "./types";
+import { apiClient } from "../../../lib/apiClient";
+import type { Platform } from "./types";
 
-export const getPlatforms = (filter: PlatformFilter) => {
-  return platforms.filter((platform) => {
-    const matchKeyword =
-      platform.platformName
-        .toLowerCase()
-        .includes(filter.keyword.toLowerCase()) ||
-      platform.platformCode
-        .toLowerCase()
-        .includes(filter.keyword.toLowerCase());
+type PlatformResponse = {
+  platform_code: string;
+  platform_name: string;
+  type: string | null;
+  commission_rate: number | null;
+  status: string;
+  created_at: string;
+  updated_at: string;
+};
 
-    const matchType =
-      filter.type === "전체" || platform.type === filter.type;
+const mapPlatformResponse = (platform: PlatformResponse): Platform => {
+  return {
+    id: Number(platform.platform_code.replace("PLT-", "")),
+    platformCode: platform.platform_code,
+    platformName: platform.platform_name,
+    type: platform.type ?? "오픈마켓",
+    integrationType: "미연동",
+    managerName: "-",
+    managerPhone: "-",
+    settlementCycle: "-",
+    commissionRate: platform.commission_rate ?? 0,
+    status: platform.status === "비활성" ? "비활성" : "사용중",
+    createdAt: platform.created_at.slice(0, 10),
+    updatedAt: platform.updated_at.slice(0, 10),
+  };
+};
 
-    const matchIntegrationType =
-      filter.integrationType === "전체" ||
-      platform.integrationType === filter.integrationType;
+export const getPlatforms = async (): Promise<Platform[]> => {
+  const response = await apiClient.get<PlatformResponse[]>("/platforms");
 
-    const matchStatus =
-      filter.status === "전체" || platform.status === filter.status;
-
-    return (
-      matchKeyword &&
-      matchType &&
-      matchIntegrationType &&
-      matchStatus
-    );
-  });
+  return response.data.map(mapPlatformResponse);
 };
