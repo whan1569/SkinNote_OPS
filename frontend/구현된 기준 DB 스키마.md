@@ -1,9 +1,9 @@
+```mermaid
 erDiagram
 
     PRODUCTS {
         varchar product_code PK "상품 코드"
         varchar product_name "상품명"
-        varchar sku "SKU 코드"
         varchar category "카테고리"
         varchar brand "브랜드"
         timestamptz created_at "등록일"
@@ -54,8 +54,9 @@ erDiagram
         timestamptz updated_at "수정일"
     }
 
-    PRODUCTS ||--o{ PRODUCT_SUPPLIER_PRICES : "상품별 공급가"
-    SUPPLIERS ||--o{ PRODUCT_SUPPLIER_PRICES : "공급처별 매입단가"
+    PRODUCTS ||--o{ SUPPLIER_PRICES : "상품별 공급가"
+    SUPPLIERS ||--o{ SUPPLIER_PRICES : "공급처별 매입단가"
 
-    PRODUCTS ||--o{ PRODUCT_PLATFORM_PRICES : "플랫폼별 판매가"
-    PLATFORMS ||--o{ PRODUCT_PLATFORM_PRICES : "플랫폼 판매 정책"
+    PRODUCTS ||--o{ PLATFORM_PRICES : "플랫폼별 판매가"
+    PLATFORMS ||--o{ PLATFORM_PRICES : "플랫폼 판매 정책"
+```
